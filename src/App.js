@@ -1,20 +1,23 @@
+import React from 'react';
 import './App.css';
-// import { useState } from 'react';
 import counterStore from './stores/CounterStore';
-import CountBox from './components/CountBox';
+import IncreaseBox from './components/IncreaseBox';
+import DecreaseBox from './components/DecreaseBox';
 
 function App() {
-  // const [count,setCount]=useState(0)
-
-  const {count,increase,increaseBy,decrease,decreaseBy} =counterStore()
+  const { increase, increaseBy, decrease, decreaseBy } = counterStore();
   return (
-    <div className="App">
-      <h1>count:{count}</h1>
-      <button onClick={increase}>increase</button>
-      <button onClick={()=>increaseBy(5)}>10씩증가</button>
-      <button onClick={decrease}>decrease</button>
-      <button onClick={()=>decreaseBy(10)}>10씩감소</button>
-      <CountBox />
+    <div>
+      <div className="increase">
+        <IncreaseBox />
+        <button onClick={increase}>1 증가</button>
+        <button onClick={() => increaseBy(10)}>10 증가</button>
+      </div>
+      <div className="decrease">
+        <DecreaseBox />
+        <button onClick={decrease}>1 감소</button>
+        <button onClick={() => decreaseBy(10)}>10 감소</button>
+      </div>
     </div>
   );
 }

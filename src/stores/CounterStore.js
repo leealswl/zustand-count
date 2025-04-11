@@ -1,13 +1,16 @@
 import { create } from 'zustand';
 
-const counterStore = create((set)=>({
-    count:1,
-    increase:()=>set((state)=>({count:state.count+1})),
-    decrease:()=>set((state)=>({count:state.count-1})),
-    increaseBy:(value)=>set((state)=>({
-        count:state.count+value})),
-    decreaseBy:(value)=>set((state)=>({
-        count:state.count-value})),
-}))
+const counterStore = create((set) => ({
+  increaseCount: 0,
+  decreaseCount: 0,
+  
+  increase: () => set((state) => ({ increaseCount: state.increaseCount + 1 })),
+  increaseBy: (value) =>
+    set((state) => ({ increaseCount: state.increaseCount + value })),
+  
+  decrease: () => set((state) => ({ decreaseCount: state.decreaseCount - 1 })),
+  decreaseBy: (value) =>
+    set((state) => ({ decreaseCount: state.decreaseCount - value })),
+}));
 
-export default counterStore
+export default counterStore;
